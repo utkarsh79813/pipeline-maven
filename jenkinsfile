@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    environment {
+        Name = 'utkarsh'
+    }
+    stages {
+        stage('checkout') {
+            steps {
+                sh 'echo we are taking code form git repo'
+            }
+        }
+    }
+    stage('build') {
+            steps {
+                sh 'echo we are in building phase'
+            }
+    }
+    stage('test') {
+        steps {
+            sh 'we are in testing phase'
+        }
+    }
+    stage('deploy') {
+        steps {
+            sh 'echo we are in deploying phase'
+        }
+    }
+
+    post {
+        failure {
+            sh 'echo we have failed'
+        }
+        success {
+            sh 'echo we are passed'
+        }
+    }
+}

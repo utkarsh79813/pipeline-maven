@@ -1,0 +1,19 @@
+echo "************************************"
+echo "Ready  to deploy application"
+echo "Expoerting the variable name for compose file IMAGE & TAG"
+echo "************************************"
+export IMAGE=$(sed -n '1p' /tmp/.auth)
+export TAG=$(sed -n '2p' /tmp/.auth)
+echo $IMAGE
+echo $TAG
+echo "************************************"
+echo "log in to docker hub"
+echo "************************************"
+docker login -u utkarsh79813 -p $(sed -n '3p' /tmp/.auth)
+sleep 3
+echo "************************************"
+echo "Pulling the docker images from Docker Hub using Docker compose file"
+echo "************************************"
+echo docker pull utkarsh79813/$IMAGE:$TAG
+cd /app && docker-compose up -d
+
