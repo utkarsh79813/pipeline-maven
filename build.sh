@@ -1,7 +1,7 @@
 #! /bin/bash
 # This scripts is for creating the package
 
-WORKSPACE=/var/jenkins_home/workspace/pipeline-docker-maven
+WORKSPACE="/var/jenkins_home/workspace/pipeline-docker-maven"
 echo "you have pass the parameter as: $@"
 #name= $@
 docker run --rm -it -v "$(WORKSPACE)/java_app":/app -v $(WORKSPACE)/.m2:/root/.m2 -w /app maven:latest $@
