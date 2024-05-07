@@ -6,7 +6,7 @@ pipeline {
                 sh '''
                 echo we are building jar file and then creating images out of it
                 sleep 2
-                ./home/jenkins/jenkins-data/pipeline/build.sh mvn -B -DskipTests clean package
+                ./build.sh mvn -B -DskipTests clean package
                 '''
             }
         }
