@@ -12,7 +12,7 @@ cp /home/jenkins/jenkins-data/pipeline/java_app/target/my-app-1.0-SNAPSHOT.jar /
 echo "***********************"
 echo "Building Docker Images"
 sleep 5
-export BUILD_TAG=5
+export BUILD_TAG=10
 cd jenkins/build && docker-compose -f docker-compose-build.yml build --no-cache
 #sleep 3
 #sh docker images|grep -i app
