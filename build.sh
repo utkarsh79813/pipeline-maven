@@ -1,13 +1,13 @@
 #! /bin/bash
 # This scripts is for creating the package
 
-cd /home/jenkins/jenkins-data/pipeline
+WORKSPACE=/var/jenkins_home/workspace/pipeline-docker-maven
 echo "you have pass the parameter as: $@"
 #name= $@
-docker run --rm -it -v "$(pwd)/java_app":/app -v $(pwd)/.m2:/root/.m2 -w /app maven:latest $@
+docker run --rm -it -v "$(WORKSPACE)/java_app":/app -v $(WORKSPACE)/.m2:/root/.m2 -w /app maven:latest $@
 #mvn -B -DskipTests clean package
 sleep 5
-cp /home/jenkins/jenkins-data/pipeline/java_app/target/my-app-1.0-SNAPSHOT.jar /home/jenkins/jenkins-data/pipeline/jenkins/build/
+cp $(WORKSPACE)/java_app/target/my-app-1.0-SNAPSHOT.jar $(WORKSPACE)/jenkins/build/
 
 echo "***********************"
 echo "Building Docker Images"
